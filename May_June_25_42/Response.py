@@ -1,0 +1,92 @@
+# ################### Question 1 #####################
+#
+# TopOfStack = -1
+# Stack = ["-1"]*20
+#
+# def Push(item:str):
+#     global TopOfStack, Stack
+#     if TopOfStack == 19:
+#         return -1
+#
+#     else:
+#         TopOfStack += 1
+#         Stack[TopOfStack] = item
+#         return 1
+#
+# def Pop():
+#     global TopOfStack, Stack
+#     if TopOfStack == -1:
+#         return "-1"
+#
+#     else:
+#         item = Stack[TopOfStack]
+#         TopOfStack -= 1
+#         return item
+#
+#
+# def ReadData(filename):
+#     global TopOfStack, Stack
+#     try:
+#         with open(filename, "r") as file:
+#             for line in file:
+#                 pushStatus = Push(line.strip())
+#                 if pushStatus == -1:
+#                     print ("Stack full")
+#     except Exception as e:
+#         print(f"Error reading the file: {e}")
+#
+#
+# def Calculate():
+#     global TopOfStack, Stack
+#     total = Pop()
+#     total = float(total)
+#
+#
+#     while TopOfStack != -1:
+#         op = Pop()
+#         num = float(Pop())
+#
+#         if op == "+":
+#             total = total + num
+#         elif op == "-":
+#             total = total - num
+#         elif op == "*":
+#             total = total * num
+#         elif op == "/":
+#             total = total / num
+#         elif op == "^":
+#             total = total ** num
+#
+#     return total
+#
+# filename = input("Enter the file name: ")
+# ReadData(filename)
+# calculatedNum = Calculate()
+# print(calculatedNum)
+
+#################### Question 2 #####################
+
+HashTable = [None]*200
+Spare = [None]*100
+FreeSpace = 0
+
+class Record:
+    def __init__(self, key:int, Item1:int, Item2:int):
+        self.key = key
+        self.Item1 = Item1
+        self.Item2 = Item2
+
+def initialize():
+    global HashTable, Spare, FreeSpace
+    for i in range(200):
+        HashTable[i] = Record(-1, -1, -1)
+    for i in range(100):
+        Spare[i] = Record(-1, -1, -1)
+
+    print(HashTable)
+    print(Spare)
+initialize()
+
+
+
+
