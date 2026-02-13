@@ -83,10 +83,15 @@ def initialize():
     for i in range(100):
         Spare[i] = Record(-1, -1, -1)
 
-    print(HashTable)
-    print(Spare)
-initialize()
+def CalculateHash(KeyField):
+    keyVal = KeyField % 200
+    return keyVal
 
-
-
-
+def InsertIntoHash(NewRecord:Record):
+    global HashTable, Spare, FreeSpace
+    key = CalculateHash(NewRecord.key)
+    if HashTable[key].key != -1:
+        Spare[FreeSpace] = NewRecord
+        FreeSpace += 1
+    else:
+        HashTable[key] = NewRecord
