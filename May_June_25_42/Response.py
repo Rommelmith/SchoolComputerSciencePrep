@@ -1,5 +1,5 @@
 # ################### Question 1 #####################
-'''
+
 TopOfStack = -1
 Stack = ["-1"]*20
 
@@ -63,10 +63,9 @@ filename = input("Enter the file name: ")
 ReadData(filename)
 calculatedNum = Calculate()
 print(calculatedNum)
-'''
+
 #################### Question 2 #####################
 
-''''
 HashTable = [None]*200
 Spare = [None]*100
 FreeSpace = 0
@@ -120,4 +119,3 @@ if __name__ == '__main__':
     initialize()
     CreateHashTable()
     PrintSpare()
-'''''
