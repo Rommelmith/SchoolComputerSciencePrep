@@ -55,48 +55,90 @@
 
 
 ###################### Question 2 ###############################
-class Node:
-    def __init__(self, Data):
-        # --- Attribute Declarations ---
-        self.__Data = Data
-        self.__LeftPointer = -1
-        self.__RightPointer = -1
+# class Node:
+#     def __init__(self, Data):
+#         # --- Attribute Declarations ---
+#         self.__Data = Data
+#         self.__LeftPointer = -1
+#         self.__RightPointer = -1
+#
+#     def GetLeft(self):
+#         return self.__LeftPointer
+#     def GetRight(self):
+#         return self.__RightPointer
+#     def GetData(self):
+#         return self.__Data
+#
+#     def SetLeft(self, pointer):
+#         self.__LeftPointer = pointer
+#     def SetRight(self, pointer):
+#         self.__RightPointer = pointer
+#     def SetData(self, data):
+#         self.__Data = data
+#
+# class Tree:
+#     def __init__(self):
+#         self.__FirstNode = -1
+#         self.__NumberNodes = 0
+#         self.__Tree = [Node(-1) for i in range(20)]
+#
+#     def InsertNode(self, NewNode:Node):
+#         if self.__FirstNode == -1:
+#             self.__Tree[self.__NumberNodes] = NewNode
+#             self.__NumberNodes += 1
+#             self.__FirstNode = 0
+#         else:
+#             self.__Tree[self.__NumberNodes] = NewNode
+#             currentNode = self.__FirstNode
+#             while True:
+#                 if NewNode.GetData() < self.__Tree[currentNode].GetData():
+#                     if self.__Tree[currentNode].GetLeft() == -1:
+#                         self.__Tree[currentNode].SetLeft(self.__NumberNodes)
+#                         break
+#                     else:
+#                         currentNode = self.__Tree[currentNode].GetLeft()
+#
+#                 else:
+#                     if self.__Tree[currentNode].GetRight() == -1:
+#                         self.__Tree[currentNode].SetRight(self.__NumberNodes)
+#                         break
+#                     else:
+#                         currentNode = self.__Tree[currentNode].GetRight()
+#             self.__NumberNodes += 1
+#
+#     def OutputTree(self):
+#         if self.__NumberNodes == 0:
+#             print("No nodes")
+#         else:
+#             for i in range(self.__NumberNodes):
+#                 print(self.__Tree[i].GetLeft(), self.__Tree[i].GetData(), self.__Tree[i].GetRight())
+#
+#
 
-    def GetLeft(self):
-        return self.__LeftPointer
-    def GetRight(self):
-        return self.__RightPointer
-    def GetData(self):
-        return self.__Data
 
-    def SetLeft(self, pointer):
-        self.__LeftPointer = pointer
-    def SetRight(self, pointer):
-        self.__RightPointer = pointer
-    def SetData(self, data):
-        self.__Data = data
+################## Question 3 ##############################
 
-class Tree:
-    def __init__(self):
-        self.__FirstNode = -1
-        self.__NumberNodes = 0
-        self.__Tree = [Node(-1) for i in range(20)]
 
-    def InsertNode(self, NewNode:Node):
-        if self.__FirstNode == -1:
-            self.__Tree[self.__NumberNodes] = NewNode
-            self.__NumberNodes += 1
-            self.__FirstNode = 0
-        else:
-            self.__Tree[self.__NumberNodes] = NewNode
-            currentNode = self.__FirstNode
-            while True:
-                if NewNode.GetData() < self.__Tree[currentNode].GetData():
-                    if self.__Tree[currentNode].GetLeft() == -1:
-                        self.__Tree[currentNode].SetLeft(self.__NumberNodes)
-                        break
-                    else:
-                        currentNode = self.__Tree[currentNode].GetLeft()
+NumberArray = [100, 85, 644, 22, 15, 8, 1]
+LastItem = 0
+LoopAgain = False
+
+def RecursiveInsertion(IntegerArray, NumberElements: int):
+    global LastItem, NumberArray, LoopAgain
+    if NumberElements <= 1:
+        return IntegerArray
+    else:
+        RecursiveInsertion(IntegerArray, NumberElements - 1)
+        LastItem = IntegerArray[NumberElements-1]
+        CheckItem = NumberElements -2
+
+    LoopAgain = True
+    if CheckItem < 0:
+        LoopAgain = False
+
+    else:
+        if IntegerArray[CheckItem] < LastItem:
+            LoopAgain = False
 
     while LoopAgain:
         IntegerArray[CheckItem+1] = IntegerArray[CheckItem]
@@ -145,7 +187,7 @@ def BinarySearch(IntergerArray, First, Last, ToFind):
             return BinarySearch(IntergerArray, mid + 1, Last, ToFind)
 
 print("BinarySearch")
-print(BinarySearch(NumberArray, 0, len(NumberArray)-1, 1000))
+print(BinarySearch(NumberArray, 0, len(NumberArray)-1, 644))
 
 
 
