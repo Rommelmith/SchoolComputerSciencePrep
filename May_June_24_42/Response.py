@@ -98,13 +98,56 @@ class Tree:
                     else:
                         currentNode = self.__Tree[currentNode].GetLeft()
 
-                else:
-                    if self.__Tree[currentNode].GetRight() == -1:
-                        self.__Tree[currentNode].SetRight(self.__NumberNodes)
-                        break
-                    else:
-                        currentNode = self.__Tree[currentNode].GetRight()
-            self.__NumberNodes += 1
+    while LoopAgain:
+        IntegerArray[CheckItem+1] = IntegerArray[CheckItem]
+        CheckItem = CheckItem - 1
+
+        if CheckItem < 0:
+            LoopAgain = False
+        else:
+            if IntegerArray[CheckItem] < LastItem:
+                LoopAgain = False
+
+    IntegerArray[CheckItem+1] = LastItem
+    return IntegerArray
+
+print("Recursive")
+print(RecursiveInsertion(NumberArray, len(NumberArray)))
+
+
+def IterativeInsertion(Myarr, NumberElemetns):
+
+    if NumberElemetns <= 1:
+        return Myarr
+    else:
+        for i in range(1, NumberElemetns):
+            j=i
+            while j > 0 and Myarr[j-1] > Myarr[j]:
+                Myarr[j-1], Myarr[j] = Myarr[j], Myarr[j-1]
+                j -=1
+        return Myarr
+
+print("Iterative")
+print(IterativeInsertion(NumberArray, len(NumberArray)))
+
+
+def BinarySearch(IntergerArray, First, Last, ToFind):
+        if First > Last:
+            return -1
+
+        mid = (First + Last) // 2
+        if IntergerArray[mid] ==  ToFind:
+            return mid
+
+        elif IntergerArray[mid] > ToFind:
+            return BinarySearch(IntergerArray, First, mid - 1, ToFind)
+        else:
+            return BinarySearch(IntergerArray, mid + 1, Last, ToFind)
+
+print("BinarySearch")
+print(BinarySearch(NumberArray, 0, len(NumberArray)-1, 1000))
+
+
 
 
 
